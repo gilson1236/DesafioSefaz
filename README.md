@@ -9,8 +9,8 @@ Aplicativo que simula um cadastro de usuários
 <div><br>
   * Eclipse <img align="center" alt="Eclipse" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eclipse/eclipse-original-wordmark.svg"><br>
   * Java 17  <img align="center" alt="Java" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg"><br>
-  * Java Server Faces
-  * H2 Database
+  * Java Server Faces <br>
+  * H2 Database <br>
   * Hibernate <img align="center" alt="Hibernate" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hibernate/hibernate-original.svg"><br>
 </div>
 
