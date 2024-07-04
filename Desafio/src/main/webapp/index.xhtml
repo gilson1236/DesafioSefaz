@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Cadastro de Usuários</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Usuário">
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Nome: "/>
+				<h:inputText value="#{usuarioBean.usuario.nome}"/>
+				<h:outputLabel value="Email: "/>
+				<h:inputText value="#{usuarioBean.usuario.email}"/>
+				<h:outputLabel value="Senha: "/>
+				<h:inputSecret value="#{usuarioBean.usuario.senha}"/>
+			</h:panelGrid>
+			<h:panelGrid columns="4" style="margin-top: 10px;">
+				<h:outputLabel value="Telefones: "/>
+                <h:inputText value="#{usuarioBean.telefone.ddd}" placeholder="DDD" />
+                <h:inputText value="#{usuarioBean.telefone.numero}" placeholder="Número" />
+                <h:inputText value="#{usuarioBean.telefone.tipo}" placeholder="Tipo" />
+				<h:commandButton value="Adicionar" action="#{usuarioBean.adicionaTelefone}">
+					<f:ajax execute="@this" render="@form" />
+				</h:commandButton>
+			</h:panelGrid>
+			
+			<h:dataTable value="#{usuarioBean.usuario.telefones}" var="telefone" style="margin-top: 10px;">
+				<h:column>
+					<f:facet name="header">DDD</f:facet>
+					#{telefone.ddd}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Número</f:facet>
+					#{telefone.numero}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Tipo</f:facet>
+					#{telefone.tipo}
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="Salvar" action="#{usuarioBean.salvar}" />
+		</p:panel>
+	</h:form>
+		<p:dataTable value="#{usuarioBean.usuarios}" var="usuario" paginator="true" rows="10">
+			<p:column headerText="ID">
+				<h:outputText value="#{usuario.id}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{usuario.nome}" />
+			</p:column>
+			<p:column headerText="Email">
+				<h:outputText value="#{usuario.email}" />
+			</p:column>
+			<p:column headerText="Telefones">
+				<ui:repeat value="#{usuario.telefones}" var="telefone">
+					<h:outputText value="#{telefone.numero}" />
+					<br/>
+				</ui:repeat>
+			</p:column>
+			<p:column headerText="Ações">
+				<p:commandButton value="Deletar" action="#{usuarioBean.remover(usuario.id)}" update="@form" />
+			</p:column>
+		</p:dataTable>		
+	</h:body>
+</html>
